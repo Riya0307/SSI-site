@@ -87,7 +87,7 @@ body {
     text-align: center; 
     padding-left: 5%;
     padding-right: 5%;
-    height: 35px;
+    height: 30px;
   }
   
   .info-column {
@@ -202,7 +202,7 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     padding: 2em 1em;
-    background-color: #f9f9f9;
+    background-color: white;
   }
   
   .testimonials-heading {
@@ -277,8 +277,8 @@ body {
   
   .read-more-btn {
     display: inline-block;
-    margin-top: 50px;
-    padding: 12px 24px;
+    margin-top: 30px;
+    padding: 10px 22px;
     margin-left: 10%;
     font-size: 16px;
     color: rgb(23, 105, 138);

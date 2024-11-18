@@ -156,11 +156,16 @@
       }
     
       .footer-logo img {
-        width: 80px; 
-        height: auto; 
+        height: 80px;
+        width: auto; 
+        display: block; 
+        margin: 0 auto; 
+      }
+
+      .footer-address p{
+        margin-top: 10px;
       }
     
-      .footer-address p,
       .footer-social a,
       .footer-column ul li {
         font-size: 1rem; 
