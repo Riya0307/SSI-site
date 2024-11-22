@@ -22,7 +22,8 @@
       </div>
       <div class="form-section">
         <h2>Get a <span>Call Back</span></h2>
-        <form>
+        <form action="" method="post" name="elecForm">
+          <input type="hidden" name="formId" value="form3">
           <div class="form-group">
             <input type="text" id="name" name="name" placeholder="Name*" required>
           </div>
@@ -64,6 +65,22 @@
             document.getElementById('footer-container').innerHTML = data;
         })
         .catch(err => console.log("Failed to load Footer:", err));
+
+        
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzLVL30BLhxoKvyln8VjNsYLllwBVUGPkwKDTRIqpcsXg5A5-AP4PuLufZNjQCjW1klOw/exec'
+
+
+const form = document.forms['elecForm']
+
+
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+  .then(response => alert("Thank you! your form is submitted successfully." ))
+  .then(() => { window.location.reload(); })
+  .catch(error => console.error('Error!', error.message))
+})
+
 </script>
 </body>
 </html>
