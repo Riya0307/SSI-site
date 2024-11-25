@@ -3,8 +3,6 @@
   }
   
   body {
-    margin: 0;
-    padding: 0;
     width: 100%;
     font-family: 'Arial', sans-serif;
   }
@@ -113,7 +111,7 @@
     height: 100px; 
   }
   
-  button {
+  .submit {
     background-color: #1a518b;
     color: white;
     border: none;
@@ -126,7 +124,7 @@
     display: block;
   }
   
-  button:hover {
+  .submit:hover {
     background-color: #0056b3;
   }
   

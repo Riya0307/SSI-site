@@ -7,11 +7,36 @@
   <link rel="stylesheet" href="../css/navbar.css"> <!-- Add CSS for Navbar -->
   <link rel="stylesheet" href="../css/footer.css"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <title>WebServices</title>
+  <title>SSI</title>
 </head>
 <body>
 
-<div id="navbar-container"></div>
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <a href="../index.html">
+        <img src="../assets/SSI_logo1.png" alt="Company Logo">
+      </a>
+    </div>
+    <button class="hamburger">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="navbar-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../pages/about_us.html">About Us</a></li>
+      <li>
+        <a href="/pages/services.html">Services</a>
+      </li>
+      <li><a href="/pages/shop.html">Shop</a></li>
+      <li class="dropdown">
+        <a href="#company">Company <span class="arrow">&#9662;</span></a>
+        <ul class="dropdown-content">
+          <li><a href="#about-us">About Us</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="#careers">Careers</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
 
   <!-- ContactUs Content -->
   <div class="contact-container">
@@ -33,56 +58,35 @@
             <input type="number" id="mobile" name="mobile" placeholder="Phone Number*" required>
           </div>
           <div class="form-group">
-            <input type="text" id="company" name="company" placeholder="Company/Organization*" required>
+            <input type="text" id="company" name="company" placeholder="Company/Organization">
           </div>
           <div class="form-group">
-            <select id="products" name="products" required>
-              <option value="" disabled selected>Select a Product*</option>
-              <option value="product1">Product 1</option>
-              <option value="product2">Product 2</option>
-              <option value="product3">Product 3</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <select id="services" name="services" required>
-              <option value="" disabled selected>Select a Service*</option>
-              <option value="service1">Service 1</option>
-              <option value="service2">Service 2</option>
-              <option value="service3">Service 3</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <textarea id="message" name="message" placeholder="Write your message" required></textarea>
+            <textarea id="message" name="message" placeholder="Write your message" maxlength="300" required></textarea>
+            <p id="char-count">0 / 300 characters</p>
           </div>
           <button type="submit">Submit</button>
         </form>
+        
+        
       </div>
     </div>
   </div>
 
   <section class="contact-details">
     <h2>Contact Us</h2>
-    <h2 class="place">INDIA</h2>
     <p><strong>Special Software India Pvt. Ltd.</strong></p>
-    <p><strong>Address:</strong> 123 Business Street, Cityname, Country</p>
-    <p><strong><i class="fa-solid fa-envelope"></i></strong> <a href="mailto:info@company.com">info@company.com</a></p>
+    <p><strong><i class="fa-solid fa-location-dot"></i></strong> HIG B 26, Madhav Baug Colony, Mango, Jamshedpur Jharkhand -832110</p>
+    <p><strong><i class="fa-solid fa-envelope"></i></strong> 
+      <a href="mailto:rajat@specialsoftware.net">rajat@specialsoftware.net</a>, 
+      <a href="mailto:agrawal_rajat@yahoo.com">agrawal_rajat@yahoo.com</a></p>
     <p><strong><i class="fa-solid fa-phone"></i></strong> <a href="tel:+1234567890">+1 (234) 567-890</a></p>
-    <p><strong>Working Hours:</strong> Monday - Friday, 9:00 AM - 6:00 PM</p>
+    <p><strong><i class="fa-regular fa-clock"></i></strong> Monday - Friday, 9:00 AM - 6:00 PM</p>
   </section>
   
-  
-    <div id="footer-container"></div>
-
+  <div id="footer-container"></div>
 
   <script src="../js/navbar.js"></script>
   <script>
-    // Load Navbar
-    fetch('../components/navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('navbar-container').innerHTML = data;
-        })
-        .catch(err => console.log("Failed to load Navbar:", err));
 
     // Load Footer
     fetch('../components/footer.html')
@@ -92,7 +96,23 @@
         })
         .catch(err => console.log("Failed to load Footer:", err));
 
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzLVL30BLhxoKvyln8VjNsYLllwBVUGPkwKDTRIqpcsXg5A5-AP4PuLufZNjQCjW1klOw/exec'
+        document.getElementById("message").addEventListener("input", function () {
+          const maxCharacters = 300;
+          const currentCharacters = this.value.length;
+          const charCountElement = document.getElementById("char-count");
+        
+          if (currentCharacters <= maxCharacters) {
+            charCountElement.textContent = `${currentCharacters} / ${maxCharacters} characters`;
+          } else {
+            // If the character limit is exceeded, trim the input value
+            this.value = this.value.slice(0, maxCharacters);
+            charCountElement.textContent = `${maxCharacters} / ${maxCharacters} characters`;
+          }
+        });
+        
+
+       
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby-BiMByyT1beBQe_GaBXv4e1Dq0U1izn9BUuUlnKKMc2-pglumIgo-Z9XXAGlOQ5dPgg/exec'
 
 
 const form = document.forms['contact-form']
@@ -104,8 +124,9 @@ form.addEventListener('submit', e => {
   .then(response => alert("Thank you! your form is submitted successfully." ))
   .then(() => { window.location.reload(); })
   .catch(error => console.error('Error!', error.message))
-})
+}) 
+        
+  </script>
 
-</script>
 </body>
 </html>

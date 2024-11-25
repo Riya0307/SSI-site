@@ -7,12 +7,38 @@
   <link rel="stylesheet" href="../css/navbar.css"> 
   <link rel="stylesheet" href="../css/footer.css"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <title>WebServices</title>
+  <title>SSI</title>
   
 </head>
 <body>
 
-<div id="navbar-container"></div>
+
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <a href="../index.html">
+        <img src="../assets/SSI_logo1.png" alt="Company Logo">
+      </a>
+    </div>
+    <button class="hamburger">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="navbar-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../pages/about_us.html">About Us</a></li>
+      <li>
+        <a href="/pages/services.html">Services</a>
+      </li>
+      <li><a href="/pages/shop.html">Shop</a></li>
+      <li class="dropdown">
+        <a href="#company">Company <span class="arrow">&#9662;</span></a>
+        <ul class="dropdown-content">
+          <li><a href="#about-us">About Us</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="#careers">Careers</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
 
 <!-- Product Section -->
 <section class="product-section">
@@ -31,6 +57,7 @@
     <h2>Havells 175 mm I-Cool Table Fan, Black Grey</h2>
     <hr>
     <div class="details">Price: ₹2,499.00</div>
+    <button onclick="showForm()">Click to Book</button>
     <div class="brand-details">
       <table>
         <tr>
@@ -117,19 +144,30 @@
   </div>
    
   </section>
+  <div class="modal" id="orderModal">
+    <div class="modal-content">
+        <span class="close-button" onclick="hideForm()">&times;</span>
+        <form>
+          <h2>Book Your <span>Order</span></h2>
+            <label for="name"></label>
+            <input type="text" id="name" name="name" placeholder="Name*" required>
+            <label for="phone"></label>
+            <input type="tel" id="phone" name="phone" placeholder="Phone*" required>
+            <label for="email"></label>
+            <input type="email" id="email" name="email" placeholder="Email*" required>
+            <label for="quantity"></label>
+            <input type="number" id="quantity" name="quantity" min="1" placeholder="Order Qunatity*" required>
+            <label for="address"></label>
+            <textarea id="address" name="address" rows="3" placeholder="Enter your complete address*" required></textarea>
+            <button type="submit">Submit Order</button>
+        </form>
+    </div>
+</div>
 
 <div id="footer-container"></div>
 
 <script src="../js/navbar.js"></script>
 <script>
-  // Load Navbar
-  fetch('../components/navbar.html')
-      .then(response => response.text())
-      .then(data => {
-          document.getElementById('navbar-container').innerHTML = data;
-      })
-      .catch(err => console.log("Failed to load Navbar:", err));
-
   // Load Footer
   fetch('../components/footer.html')
       .then(response => response.text())
@@ -149,6 +187,25 @@
     thumbnails.forEach(img => img.classList.remove('active'));
     thumbnail.classList.add('active');
   }
+
+  
+  function showForm() {
+    // Show the modal
+    const modal = document.getElementById("orderModal");
+    modal.style.display = "flex";
+
+    // Add blur to the background
+    document.body.classList.add("modal-active");
+}
+
+function hideForm() {
+    // Hide the modal
+    const modal = document.getElementById("orderModal");
+    modal.style.display = "none";
+
+    // Remove blur from the background
+    document.body.classList.remove("modal-active");
+}
 </script>
 
 </body>
